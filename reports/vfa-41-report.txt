@@ -1,0 +1,45 @@
+============================================================
+              VFA-41 SQUADRON ACTIVITY REPORT
+============================================================
+
+PERSONNEL ROSTER
+------------------------------------------------------------
+Total Pilots: 3
+
+Capt Peter Mitchell "Maverick" - 12 years experience
+Lt Bradley Bradshaw "Rooster" - 4 years experience
+Maj Sarah Blackwood "Phoenix" - 8 years experience
+
+
+AIRCRAFT INVENTORY
+------------------------------------------------------------
+Total Aircraft: 3
+Active: 3
+Maintenance: 0
+
+NE-400 | F/A-18E Super Hornet | Status: Active
+NE-401 | F/A-18E Super Hornet | Status: Active
+NE-402 | F/A-18F Super Hornet | Status: Active
+
+
+FLIGHT OPERATIONS
+------------------------------------------------------------
+Total Flight Hours: 915.60
+Total Missions Flown: 286
+Average Mission Duration: 3.20 hours
+
+
+MISSION BREAKDOWN
+------------------------------------------------------------
+Combat: 53 missions
+Patrol: 53 missions
+Reconnaissance: 66 missions
+Training: 54 missions
+Transport: 60 missions
+
+
+CURRENT OPERATIONAL STATUS
+------------------------------------------------------------
+STATUS: FULLY OPERATIONAL
+Aircraft Active: 3
+Aircraft in Maintenance: 0

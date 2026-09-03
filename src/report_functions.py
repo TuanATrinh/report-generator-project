@@ -104,7 +104,24 @@ def join_data(primary_list, secondary_list, primary_key, foreign_key):
     # Hint: Create a dictionary mapping secondary_list IDs to records
     # Hint: For each record in primary_list, look up the matching secondary record
     # Hint: Use dict.update() to merge dictionaries
-    pass
+    secondary_lookup = {}
+
+    for record in secondary_list:
+        secondary_lookup[record[foreign_key]] = record
+
+    joined_data = []
+
+    for primary_record in primary_list:
+        joined_record = primary_record.copy()
+
+        matching_record = secondary_lookup.get(primary_record[primary_key])
+
+        if matching_record:
+            joined_record.update(matching_record)
+
+        joined_data.append(joined_record)
+
+    return joined_data
 
 
 def write_report_to_file(filepath, content):
@@ -128,7 +145,7 @@ if __name__ == '__main__':
 
     #print("Implement functions above, then uncomment test code below")
 
-    #Phase 1 Tests:
+#Phase 1 Tests:
     print("Phase 1 Tests:")
     print("|||----- Phase 1 test start -----|||")
     # # Test read_csv_file
@@ -150,7 +167,7 @@ if __name__ == '__main__':
     print("|||----- Phase 1 test End -----|||")
 
 
-    #Phase 2 Tests
+#Phase 2 Tests
     print("\n Phase 2 Tests")
     #Phase 2 Test Start
     print("|||----- Phase 2 Tests Start -----|||")
@@ -175,4 +192,22 @@ if __name__ == '__main__':
 
     #End Phase 2 Test
     print("|||----- Phase 2 Tests End ----- |||")
+
+#Phase 3 Test
+    print("\n Phase 3 Tests")
+    #Phase 3 Test Start
+    print("|||----- Phase 3 Test Start -----|||")
+
+    #Test join_data
+    joined_flights = join_data(
+        flight_logs,
+        pilots,
+        'pilot_id',
+        'pilot_id'
+    )
+    print(f"Joined flight records: {len(joined_flights)}")
+    print(f"First joined record: {joined_flights[0]}")
+
+    #Phase 3 Test End
+    print("|||----- Phase 3 Test End -----|||")
 

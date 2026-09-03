@@ -128,7 +128,8 @@ def write_report_to_file(filepath, content):
     """Writes a text report to a file."""
     # TODO: Your code here
     # Hint: Use 'with open(filepath, 'w')' to open file for writing
-    pass
+    with open(filepath, 'w') as file:
+        file.write(content)
 
 
 def format_header(title):
@@ -136,7 +137,8 @@ def format_header(title):
     # TODO: Your code here
     # Hint: Use "=" * 60 to create a line of equals signs
     # Hint: Use .center(60) to center the title
-    pass
+    line = "=" * 60
+    return f"{line}\n{title.center(60)}\n{line}"
 
 
 # Testing functions
@@ -211,3 +213,19 @@ if __name__ == '__main__':
     #Phase 3 Test End
     print("|||----- Phase 3 Test End -----|||")
 
+#Phase 4 Test
+    print("\n Phase 4 Tests")
+    #Phase 4 Test Start
+    print("|||----- Phase 4 Test Start -----|||")
+
+    #Header Test
+    header = format_header("VFA-41 SQUADRON REPORT")
+    print(header)
+
+    #write_report_to_file test
+    write_report_to_file(
+        'reports/test-report.txt',
+        header
+    )
+
+    print("Test report written to reports/test-report.txt")

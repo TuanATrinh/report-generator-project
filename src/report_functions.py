@@ -61,7 +61,12 @@ def calculate_total(data_list, field_name):
     # Hint: Initialize a total variable to 0
     # Hint: Loop through each record and add float(record[field_name]) to total
     # Hint: Remember to convert string values to float!
-    pass
+    total = 0
+
+    for record in data_list:
+        total += float(record[field_name])
+
+    return total
 
 
 def calculate_average(data_list, field_name):
@@ -69,7 +74,13 @@ def calculate_average(data_list, field_name):
     # TODO: Your code here
     # Hint: Use calculate_total() and count_records() functions
     # Hint: Average = total / count
-    pass
+    if count_records(data_list) == 0:
+        return 0
+
+    total = calculate_total(data_list, field_name)
+    count = count_records(data_list)
+
+    return total / count
 
 
 def find_record_by_id(data_list, id_field, id_value):
@@ -77,7 +88,11 @@ def find_record_by_id(data_list, id_field, id_value):
     # TODO: Your code here
     # Hint: Loop through data_list
     # Hint: Return the record when record[id_field] == id_value
-    pass
+    for record in data_list:
+        if record[id_field] == id_value:
+            return record
+
+    return None
 
 
 def join_data(primary_list, secondary_list, primary_key, foreign_key):
@@ -134,4 +149,30 @@ if __name__ == '__main__':
     #End Phase 1 Tests
     print("|||----- Phase 1 test End -----|||")
 
+
+    #Phase 2 Tests
+    print("\n Phase 2 Tests")
+    #Phase 2 Test Start
+    print("|||----- Phase 2 Tests Start -----|||")
+
+    #Test flight_logs
+    flight_logs = read_csv_file('data/flight_logs.csv')
+
+    #Test calculate_total
+    total_hours = calculate_total(flight_logs, 'duration_hours')
+    print(f"Total flight hours: {total_hours}")
+
+    #Test calculate_average
+    average_duration = calculate_average(flight_logs, 'duration_hours')
+    print(f"Average flight duration: {average_duration}")
+
+    #Test find_record_id
+    pilot = find_record_by_id(pilots, 'pilot_id', 'P001')
+    print(f"Found pilot: {pilot}")
+
+    missing_pilot = find_record_by_id(pilots, 'pilot_id', 'P999')
+    print(f"Missing pilot: {missing_pilot}")
+
+    #End Phase 2 Test
+    print("|||----- Phase 2 Tests End ----- |||")
 

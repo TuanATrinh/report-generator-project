@@ -16,14 +16,16 @@ def read_csv_file(filepath):
     # TODO: Your code here
     # Hint: Use csv.DictReader to read CSV files into dictionaries
     # Hint: Remember to use 'with open()' for proper file handling
-    pass
+    with open(filepath, 'r') as file:
+        reader = csv.DictReader(file)
+        return list(reader)
 
 
 def count_records(data_list):
     """Counts the number of records in a dataset."""
     # TODO: Your code here
     # Hint: Use the len() function
-    pass
+    return len(data_list)
 
 
 def get_unique_values(data_list, field_name):
@@ -31,7 +33,12 @@ def get_unique_values(data_list, field_name):
     # TODO: Your code here
     # Hint: Use a set to collect unique values
     # Hint: Convert the set to a list and sort it before returning
-    pass
+    unique_values = set()
+
+    for record in data_list:
+        unique_values.add(record[field_name])
+
+    return sorted(unique_values)
 
 
 def filter_by_field(data_list, field_name, field_value):
@@ -39,7 +46,13 @@ def filter_by_field(data_list, field_name, field_value):
     # TODO: Your code here
     # Hint: Use a list comprehension to filter or a loop!
     # see here for more info: https://docs.python.org/3.13/tutorial/datastructures.html#list-comprehensions
-    pass
+    filtered_data = []
+
+    for record in data_list:
+        if record[field_name] == field_value:
+            filtered_data.append(record)
+
+    return filtered_data
 
 
 def calculate_total(data_list, field_name):
@@ -97,8 +110,28 @@ def format_header(title):
 # Testing functions
 if __name__ == '__main__':
     print("Testing report functions...")
-    print("Implement functions above, then uncomment test code below")
-    
+
+    #print("Implement functions above, then uncomment test code below")
+
+    #Phase 1 Tests:
+    print("Phase 1 Tests:")
+    print("|||----- Phase 1 test start -----|||")
     # # Test read_csv_file
-    # pilots = read_csv_file('../data/pilots.csv')
-    # print(f"Loaded {len(pilots)} pilots")
+    pilots = read_csv_file('data/pilots.csv')
+    print(f"Loaded {len(pilots)} pilots")
+
+    # Test count_records
+    print(f"Number of pilots: {count_records(pilots)}")
+
+    #Test get_unique_values
+    squadrons = get_unique_values(pilots, 'squadron')
+    print(f"Squadrons: {squadrons}")
+
+    #Test filter_by_field
+    squadron_pilots = filter_by_field(pilots, 'squadron', 'VFA-41')
+    print("VFA-41 pilots: {squadron_pilots}")
+
+    #End Phase 1 Tests
+    print("|||----- Phase 1 test End -----|||")
+
+
